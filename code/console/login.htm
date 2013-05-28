@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="pt-BR">
+	<head>
+		<title>Console</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<link rel='stylesheet' href='css/login.css?m=1241728022b' type='text/css' media='all' />
+		<link rel='stylesheet' href='css/colors-fresh.css?m=1246292441b' type='text/css' media='all' />
+		<link rel='stylesheet' href='css/wpcom.css?m=1239141660b' type='text/css' />
+		<script type='text/javascript' src='js/util.js'></script>		
+		<script type='text/javascript' src='js/login.js'></script>		
+	</head>	
+	<body class="login">
+		<div id="login"><h1>Login Console</h1>		
+			<form id="form-login" name="form-login" method="post">
+				<p>
+					<label>Usu&aacute;rio<br />
+					<input type="text" name="log" id="user-login" class="input" value="" size="20" tabindex="10" /></label>
+				</p>
+				<p>
+					<label>Senha<br />
+					<input type="password" name="pwd" id="user-pass" class="input" value="" size="20" tabindex="20" /></label>					
+				</p>				
+				<p class="submit">
+					<input type="submit" value="Entrar" tabindex="100" onClick="doLogin()" />		
+				</p>
+			</form>
+		</div>
+		<script type="text/javascript">
+			try{document.getElementById('user-login').focus();}catch(e){}
+		</script>
+	</body>
+</html>
+
+

@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="pt-BR">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Console</title>
+	<link rel='stylesheet' href='css/global.css' type='text/css' media='all' />
+	<link rel='stylesheet' href='css/wp-admin.css' type='text/css' media='all' />
+	<link rel='stylesheet' href='css/colors-fresh.css' type='text/css' media='all' />
+	<script type='text/javascript' src='js/util.js'></script>
+	<script type='text/javascript' src='js/login.js'></script>
+	<script type='text/javascript' src='js/menu.js'></script>
+	<script>
+		function validateFields(){	
+			if(isEmptyField(document.getElementById("menu-title").value)) {
+				alert("É necessário o preenchimento do Título.");
+				document.getElementById("menu-title").focus();
+				document.getElementById("menu-title").value = "";
+				return;
+			}
+			update("menu-id");
+			redirect('listMenu.htm');			
+		}
+
+		function update(p_id){
+			var id = document.getElementById(p_id).value;
+			updateMenu(id);
+		}
+
+		function remove(p_id){
+			var id = document.getElementById("menu-id").value;
+			if(deleteMenu(id)){
+				redirect('listMenu.htm');				
+			}				
+		}
+	</script>	
+</head>
+<body class="wp-admin" onload="sessionConfig();">
+	<div id="wpwrap">
+		<div id="wpcontent">		
+			<div id="wphead">
+				<h1 id="site-heading" >
+					<span>Console de Administra&ccedil&atilde;o</span>				
+				</h1>
+				<div id="wphead-info">
+					<div id="user_info">
+						<p>Olá, <span id="user-login"></span> | <a href="javascript:logout();" title="Logout">Logout</a></p>
+					</div>			
+				</div>		
+			</div>	
+		</div>
+	</div>
+	<div id="wpbody">
+		<ul id="adminmenu">
+			<li class="wp-first-item wp-has-submenu wp-has-current-submenu wp-menu-open menu-top menu-top-first menu-top-last" id="menu-dashboard">
+				<a href='#' class="wp-first-item wp-has-submenu wp-has-current-submenu wp-menu-open menu-top menu-top-first menu-top-last" tabindex="1">Painel</a>
+				<div class='wp-submenu'>
+					<ul>
+						<li><a href="javascript:redirect('listMenu.htm');" tabindex="1">Menus</a></li>
+						<li><a href="javascript:redirect('listPage.htm');" tabindex="1">P&aacute;ginas</a></li>
+					</ul>
+				</div>
+			</li>
+		</ul>			
+		<div id="wpbody-content">
+			<div class="wrap">
+				<div class="form-wrap">
+					<div id="icon-edit" class="icon32"><br /></div>
+					<h2>Detalhe Menu</h2>
+					<form name="form-detail-menu" id="form-update-menu" method="post" action="">
+						<input type="hidden" id="session-id" name="session-id" value="" />
+						<input type="hidden" id="user-id" name="user-id" value="" />
+						<input type="hidden" id="menu-id" name="menu-id" value="" />						
+						<div class="form-field">
+							<label for="menu-title">T&iacute;tulo</label>
+							<input id="menu-title" type="text" value="" size="40" />						
+						</div>
+						<div class="form-field">
+							<label for="menu-pai">Menu Pai</label>
+							<script>getSelectMenu();</script>    
+						</div>
+						<div class="form-field">
+							<label for="menu-status">Status</label>
+							<span class="alignleft"><input type="checkbox" id="menu-status" /></span>							
+						</div>
+						<p class="submit">
+							<input type="button" class="button" value="Atualizar" onClick="validateFields();" />
+							<input type="button" class="button" value="Excluir" onClick="remove();" /> 							
+							<input type="button" class="button" value="Voltar" onClick="redirect('listMenu.htm');" />
+						</p>
+					</form>
+				</div>				
+			</div>
+			<div class="clear"></div>
+		</div><!-- wpbody-content -->
+		<div class="clear"></div>
+	</div><!-- wpbody -->
+	<div class="clear"></div>
+	<div id="footer">
+		<p id="footer-left" class="alignleft"><span id="footer-thankyou">Rise Web &copy 2009. Todos os direitos reservados.</span></p>
+		<div class="clear"></div>
+	</div>		
+</body>
+</html>
+<script>loadDataMenu();</script>

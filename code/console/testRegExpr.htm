@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="pt-BR">
+<head>
+	<title>Console</title>
+	<link rel='stylesheet' href='css/global.css' type='text/css' media='all' />
+	<link rel='stylesheet' href='css/wp-admin.css' type='text/css' media='all' />
+	<link rel='stylesheet' href='css/colors-fresh.css' type='text/css' media='all' />
+	<script type='text/javascript' src='js/util.js'></script>
+	<script type='text/javascript' src='js/menu.js'></script>
+	<script>		
+		function validateFields(){	
+			if(isEmptyField(document.getElementById("menu-title").value)) {
+				alert("E necessario o preenchimento do Titulo.");
+				document.getElementById("menu-title").focus();
+				document.getElementById("menu-title").value = "";
+				return;
+			}
+			update("menu-id");
+			submitPage("form-add-menu", "listMenu.htm");		
+		}
+		
+		function update(p_id){
+			var id = document.getElementById(p_id).value;
+			updateMenu(id);
+		}
+
+		function checkLevelMenu(){
+			var title = document.getElementById("menu-title").value;
+			if(isMenuLevel0(title)){
+				alert('Menu Level0');
+			}
+			else if(isMenuLevel1(title)){
+				alert('Menu Level1');
+			}
+			else if(isMenuLevel2(title)){
+				alert('Menu Level2');
+			}
+		}
+		
+		function checkFileName(){
+			var title = document.getElementById("menu-title").value;
+			alert('filename: ' + formatNameFile(title));
+		}
+		
+	</script>	
+</head>
+<body class="wp-admin">
+	<div id="wpwrap">
+		<div id="wpcontent">		
+			<div id="wphead">
+				<h1 id="site-heading" >
+					<span>Console de Administra&ccedil&atilde;o</span>				
+				</h1>
+				<div id="wphead-info">
+					<div id="user_info">
+						<p>Ola, Administrador</a> | <a href="#" title="Logout">Logout</a></p>
+					</div>			
+				</div>		
+			</div>	
+		</div>
+	</div>
+	<div id="wpbody">
+		<ul id="adminmenu">
+			<li class="wp-first-item wp-has-submenu wp-has-current-submenu wp-menu-open menu-top menu-top-first menu-top-last" id="menu-dashboard">
+				<a href='#' class="wp-first-item wp-has-submenu wp-has-current-submenu wp-menu-open menu-top menu-top-first menu-top-last" tabindex="1">Painel</a>
+				<div class='wp-submenu'>
+					<ul>
+						<li><a href='listMenu.htm' tabindex="1">Menus</a></li>
+						<li><a href='listPage.htm' tabindex="1">P&aacute;ginas</a></li>				
+					</ul>
+				</div>
+			</li>
+		</ul>			
+		<div id="wpbody-content">
+			<div class="wrap">
+				<div class="form-wrap">
+					<div id="icon-edit" class="icon32"><br /></div>
+					<h2>Teste</h2>
+					<form name="form-add-menu" id="form-add-menu" method="post" action="">
+						<input type="hidden" id="menu-id" name="menu-id" value="" />						
+						<div class="form-field">
+							<label for="menu-title">T&iacute;tulo</label>
+							<input id="menu-title" type="text" value="" size="40" />						
+						</div>						
+						<p class="submit">
+							<input type="button" class="button" value="Check" onClick="checkFileName();" />
+						</p>
+					</form>
+				</div>				
+			</div>
+			<div class="clear"></div>
+		</div><!-- wpbody-content -->
+		<div class="clear"></div>
+	</div><!-- wpbody -->
+	<div class="clear"></div>
+	<div id="footer">
+		<p id="footer-left" class="alignleft"><span id="footer-thankyou">Vilson Trevisan Consultoria &copy 2009. Todos os direitos reservados.</span></p>
+		<div class="clear"></div>
+	</div>		
+</body>
+</html>
+

@@ -1,0 +1,14 @@
+/* Site Admin Menu */
+#adminmenu #menu-site div.wp-menu-image {
+	background: transparent url("../images/site-admin.png") no-repeat scroll 0px -33px;
+}
+
+#adminmenu #menu-site:hover div.wp-menu-image {
+	background: transparent url("../images/site-admin.png") no-repeat scroll 0px -1px;
+}
+
+#admin-loggedin {
+	border-bottom: 1px solid #dfdfdf;
+	line-height: 2em;
+	margin: 8px 0 0 5px;
+}

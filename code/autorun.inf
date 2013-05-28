@@ -1,0 +1,5 @@
+[Autorun]
+open=Autorun.exe
+
+[AutorunPro]
+Run1=home.htm

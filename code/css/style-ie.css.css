@@ -1,0 +1,166 @@
+/*
+Theme Name: Tableless 09 v2
+Theme URI: http://tableless.com.br/
+Description: Pulga na Cueca. 
+Version: 2.0
+Author: Diego Eis
+Tags: gray, black, red
+
+Default WordPress by Diego Eis || http://twitter.com/diegoeis/
+
+	#semie #oldbrowsers
+	Este código foi escrito ignorando totalmente browsers antigos. 
+	
+	Encontre-nos no Twitter:
+	http://twitter.com/tableless/
+
+*/
+
+/** reset das tags do HTML5. Não sei porque, elas ficam como elementos de linha. Estranho, mas acho que é porque os browsers ainda não renderizam direito. Mesmo assim, resolvi colocando um display:block; fácil fácil. ***/
+header, section, footer, article, nav {display: block;}
+
+/****
+	CSS RESET
+	Resetando algumas características que podem atrapalhar a implementação
+****/
+* { margin:0; padding:0; }
+html { font-size: 62.5%; font-family: arial, helvetica, verdana, tahoma, sans-serif; }
+
+ul, ol { list-style-position:outside; }
+ul li, ol li { text-indent:0; }
+table { border-collapse:collapse; border-spacing:0; }
+fieldset, img { border:0 none; }
+ 
+h1 {font-size: 2em;}
+h2 {font-size: 1.8em;}
+h3 {font-size: 1.6em;}
+h4 {font-size: 1.4em;}
+h5 {font-size: 1.2em;}
+h6 {font-size: 1.1em;}
+hr {display: none;}
+
+*{
+	list-style: none;
+}
+
+a, a:visited {
+	color: #747474;
+	text-decoration: underline;
+}
+
+a:hover{
+	text-decoration: none;
+	color: #EB191E;
+}
+
+/**** FIM CSS RESET ****/
+
+.imgreplace {
+	text-indent: -9999px;
+	overflow: hidden;
+	display: block;
+}
+
+body {background-color: #CCCCCC;}
+
+/****
+	MAIN
+	Ele envolve o site inteiro e centraliza o layout
+****/
+section#main {
+	width:960px;
+	margin: 10px auto 0;	
+}
+
+/****
+	HEADER
+	Onde fica o logo, menus, busca, feeds, etc
+****/
+section.top {
+	height:150px;	
+}
+
+header {
+  height:113px;
+  background:url(../images/bgHeader.jpg) no-repeat;
+  -moz-border-radius:6px;  
+}
+
+nav.menu {
+	float: right;	
+}
+
+nav.menu ul li{
+	float: left; 
+	height: 26px;
+	padding-right:7px;	
+}
+
+nav.menu ul li:last-child{
+	padding-right:0px;	
+}
+
+nav.menu ul li a {
+	float: left;
+}
+
+nav.menu ul li div{
+	width: 408px;
+	height: 26px;
+	background:url(../images/titleHeader.jpg) no-repeat;	
+}
+
+/****
+	DESTAQUE PRINCIPAL HOME	
+****/
+section#highlight {
+	background:url(../images/bgPageHome.jpg) no-repeat;
+	height: 499px;
+	margin-top: 37px;	
+}
+
+section#highlight div {
+	width: 416px;
+	height: 434px;
+	margin-left:480px;
+	padding: 30px;	
+}
+
+section#highlight div p {
+	margin-top: 0px;
+	width: 414px;
+	font: 12px arial, tahoma, helvetica, sans-serif;
+	color: #666666;
+	text-align: justify;
+}
+
+section#highlight ul li {
+	display:inline;
+}
+
+section#highlight ul li div {
+	width: 480px;
+	border: 1px solid #333333;	
+}
+
+section#highlight p {
+	font: 27px/32px Georgia, Times, Times New Roman, Serif;
+	margin: 20px 0 30px;
+	color: #6E6E6E;
+}
+
+/****
+	RODAPE	
+****/
+footer {
+	width:960px;
+	float:center;
+	clear: both;    
+}
+
+footer .copyright {
+	float: left;
+	padding-top: 7px;
+	font: 11px arial, tahoma, helvetica, sans-serif;
+	color: #333333;	
+}

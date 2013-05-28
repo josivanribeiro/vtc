@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="pt-BR">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Console</title>
+	<link rel='stylesheet' href='css/global.css' type='text/css' media='all' />
+	<link rel='stylesheet' href='css/wp-admin.css' type='text/css' media='all' />
+	<link rel='stylesheet' href='css/colors-fresh.css' type='text/css' media='all' />
+	<script type='text/javascript' src='js/util.js'></script>
+	<script type='text/javascript' src='js/login.js'></script>
+	<script type='text/javascript' src='js/menu.js'></script>
+</head>
+	<body class="wp-admin" onload="sessionConfig();">
+		<div id="wpwrap">
+			<div id="wpcontent">		
+				<div id="wphead">
+					<h1 id="site-heading" >
+						<span class="site-title">Console de Administra&ccedil&atilde;o</span>				
+					</h1>
+					<div id="wphead-info">
+						<div id="user_info">
+							<p>Olá, <span id="user-login"></span> | <a href="javascript:logout();" title="Logout">Logout</a></p>
+						</div>			
+					</div>		
+				</div>	
+			</div>
+		</div>
+		<div id="wpbody">
+			<ul id="adminmenu">
+				<li class="wp-first-item wp-has-submenu wp-has-current-submenu wp-menu-open menu-top menu-top-first menu-top-last" id="menu-dashboard">
+					<a href='#' class="wp-first-item wp-has-submenu wp-has-current-submenu wp-menu-open menu-top menu-top-first menu-top-last" tabindex="1">Painel</a>
+					<div class='wp-submenu'>
+						<ul>
+							<li><a href="javascript:redirect('listMenu.htm');" tabindex="1">Menus</a></li>
+							<li><a href="javascript:redirect('listPage.htm');" tabindex="1">P&aacute;ginas</a></li>				
+						</ul>
+					</div>
+				</li>
+			</ul>					
+			<div id="wpbody-content">
+				<div class="wrap">
+					<div id="icon-edit" class="icon32"><br /></div>
+					<h2>Menus <a href="javascript:redirect('addMenu.htm');" class="button add-new-h2">Adicionar</a> <a href="javascript:getListMenuToSummary();" class="button add-new-h2">Exportar HTML</a></h2>
+					<form id="form-list-menu" action="" method="post" onsubmit="return processMenu();">						
+						<input type="hidden" id="session-id" name="session-id" value="" />
+						<input type="hidden" id="user-id" name="user-id" value="" />
+						<div class="tablenav">
+							<div class="alignleft actions">
+								<select id="action" name="action">
+									<option value="-1" selected="selected">A&ccedil;&otilde;es</option>
+									<option value="delete">Excluir</option>
+								</select>
+								<input type="submit" value="Aplicar" name="doaction" id="doaction" class="button-secondary action" />								
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="clear"></div>
+						<table class="widefat post fixed" cellspacing="0">
+							<thead>
+								<tr>
+									<th scope="col" id="cb" class="manage-column column-cb check-column"><input type="checkbox" id="checkbox-header" onClick="checkStatusCheckBoxesFromHeader();" /></th>
+									<th scope="col" id="title" class="manage-column column-title" style="">T&iacute;tulo</th>
+									<th scope="col" id="author" class="manage-column column-author" style="">Menu Pai</th>
+									<th scope="col" id="categories" class="manage-column column-categories" style="">Status</th>
+								</tr>
+							</thead>							
+							<tbody>
+								<script>
+									var page           = 1;
+									page               = querySt("page");
+									var startPage      = 0;
+									var dataPagination = null;
+									var totalRecords   = 0;
+									var totalPages     = 0;	
+																					
+									if(page == undefined){
+										page = 1;
+									}else{
+										page = parseInt(page);
+										startPage = ((page - 1) * PAGE_SIZE);
+									}
+																	
+									dataPagination = configPaginationMenu();
+									totalRecords   = dataPagination[0];
+									totalPages     = dataPagination[1];				
+									getListMenu(startPage);
+								</script>										
+							</tbody>
+						</table>
+						<div class="navigation">
+							<table class="alignright" cellspacing="0">									
+								<tfoot>
+									<tr>
+										<script>configFooterPagination(totalPages, page);</script>										
+									</tr>
+								</tfoot>									
+							</table>
+							<br class="clear" />
+						</div>
+						<br class="clear" />
+						<br class="clear" />
+					</form>
+					<br class="clear" />
+				</div>
+			<div class="clear"></div></div><!-- wpbody-content -->
+			<div class="clear"></div></div><!-- wpbody -->
+			<div class="clear"></div></div><!-- wpcontent -->
+			<div id="footer">
+				<p id="footer-left" class="alignleft"><span id="footer-thankyou">Rise Web &copy 2009. Todos os direitos reservados.</span></p>
+				<div class="clear"></div>
+			</div>	
+	</body>
+</html>
